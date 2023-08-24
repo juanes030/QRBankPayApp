@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:QRBankPayApp.ViewModels"
+             xmlns:models="clr-namespace:QRBankPayApp.Data.Models"
+             xmlns:utility="clr-namespace:QRBankPayApp.Utilities"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="viewModels:ClientsViewModel"
+             x:Class="QRBankPayApp.Views.ClientsPage"
+             xmlns:controls="clr-namespace:QRBankPayApp.Controls"
+             Padding="10,10"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:DataType="models:Client"
+                x:Key="ClientDefaultTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="15"
+                       BackgroundColor="AliceBlue">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Grid.Column="0" Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Text="{Binding Dna}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Client"
+                x:Key="ClientOneToFiveTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="15"
+                       BackgroundColor="LightCoral">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Grid.Column="0" Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Text="{Binding Dna}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Client"
+                x:Key="ClientSixToTenTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="15"
+                       BackgroundColor="LightGreen">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label Grid.Column="0" Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Text="{Binding Dna}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:ClientTemplateSelector
+                x:Key="ClientTemplateSelector"
+                DefaultTemplate="{StaticResource ClientDefaultTemplate}"
+                OneToFiveTemplate="{StaticResource ClientOneToFiveTemplate}"
+                SixToTenTemplate="{StaticResource ClientSixToTenTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Clients}"
+                            EmptyView="No Clients to display"                            
+                            ItemTemplate="{StaticResource ClientTemplateSelector}">
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
+

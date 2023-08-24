@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:QRBankPayApp.ViewModels"
+             xmlns:utility="clr-namespace:QRBankPayApp.Utilities"
+             xmlns:resx="clr-namespace:QRBankPayApp.Resx"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:ScanQrViewModel"
+             xmlns:local="clr-namespace:QRBankPayApp;assembly=QRBankPayApp"
+             mc:Ignorable="d"
+             x:Class="QRBankPayApp.Views.ScanQrPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10,0,10,0">
+            <Label Text="Lector de codigo QR"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button Command="{Binding lectorCommand}" Text="Lector Qr" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+            <Entry Text="{Binding EntryQr}" Placeholder="Resultado del QR"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:QRBankPayApp.ViewModels"
+             xmlns:models="clr-namespace:QRBankPayApp.Data.Models"
+             xmlns:utility="clr-namespace:QRBankPayApp.Utilities"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="viewModels:TransactionViewModel"
+             x:Class="QRBankPayApp.Views.TransactionPage"
+             xmlns:controls="clr-namespace:QRBankPayApp.Controls"
+             xmlns:local="clr-namespace:QRBankPayApp;assembly=QRBankPayApp">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <StackLayout Margin="10,0,10,0">
+            <Image Source="{local:ImageResources QRBankPayApp.Resources.Images.Logo.png}" WidthRequest="120" HeightRequest="120" Margin="0"/>
+            <Label Text="Transacciones Bancarias"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Title"
+                   Margin="0"
+                   FontAttributes="Bold"/>
+
+            <CollectionView ItemsSource="{Binding Transactions}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Transaction">
+                        <StackLayout>
+                            <Grid HorizontalOptions="Fill" Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.60*"/>
+                                    <ColumnDefinition Width="0.4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Description}"
+                                   FontSize="Subtitle" FontAttributes="Bold"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}"
+                                FontSize="Body"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Value}"
+                                   FontSize="Body"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Date}"
+                                   FontSize="Body"/>
+                            </Grid>
+                            <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+                        </StackLayout>                       
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Command="{Binding ScanQrCommand}" Text="Login" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
