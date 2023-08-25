@@ -2,6 +2,6 @@
 {
     public static class Settings
     {
-        public const string ApiBaseUri = "http://192.168.1.5:5000/api";
+        public const string ApiBaseUri = "http://10.101.1.242:5000/api";
     }
 }

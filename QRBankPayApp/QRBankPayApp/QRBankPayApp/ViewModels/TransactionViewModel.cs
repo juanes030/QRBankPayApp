@@ -19,14 +19,18 @@ namespace QRBankPayApp.ViewModels
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             ScanQrCommand = new AsyncCommand(async () => await OnScanQrAsync());
+            GenerateQrCommand = new AsyncCommand(async () => await OnGenerateQrAsync());
             Title = "Clients";
             _transactionService = transactionService;
         }
+
+
 
         public ObservableRangeCollection<Transaction> Transactions { get; set; } = new ObservableRangeCollection<Transaction>();
 
         public ICommand AppearingCommand { get; set; }
         public ICommand ScanQrCommand { get; set; }
+        public ICommand GenerateQrCommand { get; set; }
 
         private async Task OnAppearingAsync()
         {
@@ -57,6 +61,11 @@ namespace QRBankPayApp.ViewModels
         private async Task OnScanQrAsync()
         {
             await Shell.Current.GoToAsync($"//{nameof(ScanQrPage)}");
+        }
+
+        private async Task OnGenerateQrAsync()
+        {
+            await Shell.Current.GoToAsync($"//{nameof(GenerateQrPage)}");
         }
     }
 }

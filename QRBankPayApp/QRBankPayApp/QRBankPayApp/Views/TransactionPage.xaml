@@ -50,8 +50,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <Button Command="{Binding ScanQrCommand}" Text="Login" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding GenerateQrCommand}" Text="Generar QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+                <Button Command="{Binding ScanQrCommand}" Text="Leer QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+            </StackLayout>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

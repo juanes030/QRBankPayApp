@@ -35,8 +35,8 @@ namespace QRBankPayApp.ViewModels
             try
             {
                 var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-                scanner.TopText = "mensaje de prueba";
-                scanner.BottomText = "mensaje de prueba 2";
+                scanner.TopText = "Escanear codigo qr";
+                scanner.BottomText = "QRBankPlay";
                 var result = await scanner.Scan();
                 if(result != null)
                 {
