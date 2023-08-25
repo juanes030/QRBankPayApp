@@ -10,12 +10,24 @@
              x:DataType="viewModels:GenerateQrViewModel"
              xmlns:local="clr-namespace:QRBankPayApp;assembly=QRBankPayApp"
              mc:Ignorable="d"
-             x:Class="QRBankPayApp.Views.GenerateQrPage">
+             x:Class="QRBankPayApp.Views.GenerateQrPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame>
+                <Grid>
+                    <zxing:ZXingBarcodeImageView BarcodeFormat="QR_CODE"
+                                         BarcodeValue="Teto de pruebas"
+                                         WidthRequest="500"
+                                         HeightRequest="500"
+                                         BackgroundColor="Transparent"/>
+                    <Image Source="{local:ImageResources QRBankPayApp.Resources.Images.Logo.png}" 
+                   WidthRequest="80" 
+                   HeightRequest="80"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

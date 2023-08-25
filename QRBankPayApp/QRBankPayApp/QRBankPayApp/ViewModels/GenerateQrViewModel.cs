@@ -2,6 +2,10 @@
 {
     public class GenerateQrViewModel : BaseViewModel
     {
-        public GenerateQrViewModel() { }
+
+        public GenerateQrViewModel()
+        {
+
+        }
     }
 }

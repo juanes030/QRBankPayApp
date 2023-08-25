@@ -33,6 +33,7 @@
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
+    
     <TabBar>
         <ShellContent Title="Inicio" Icon="home.png" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
         <ShellContent Title="Transacciones" Icon="qr1.png" Route="TransactionPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
