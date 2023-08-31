@@ -11,23 +11,44 @@
              xmlns:local="clr-namespace:QRBankPayApp;assembly=QRBankPayApp"
              mc:Ignorable="d"
              x:Class="QRBankPayApp.Views.GenerateQrPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout>
-            <Frame>
-                <Grid>
+            <Label Text="Codigo QRBankPlay" 
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="CenterAndExpand" 
+                   Margin="0,10,0,20"/>
+            <Grid>
                     <zxing:ZXingBarcodeImageView BarcodeFormat="QR_CODE"
-                                         BarcodeValue="Teto de pruebas"
-                                         WidthRequest="500"
-                                         HeightRequest="500"
-                                         BackgroundColor="Transparent"/>
+                                                 BarcodeValue="{Binding CuentaBancoOrigen}"
+                                                 WidthRequest="500"
+                                                 HeightRequest="500"
+                                                 BackgroundColor="Transparent"/>
                     <Image Source="{local:ImageResources QRBankPayApp.Resources.Images.Logo.png}" 
-                   WidthRequest="80" 
-                   HeightRequest="80"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-                </Grid>
-            </Frame>
+                           WidthRequest="100" 
+                           HeightRequest="80"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+            </Grid>
+            <Grid Margin="10,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Documento:" FontSize="Title" FontAttributes="Bold"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DocumentoCliente}" FontSize="Title"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Cuenta De Banco:" FontSize="Title" FontAttributes="Bold"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CuentaBancoOrigen}" FontSize="Title"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

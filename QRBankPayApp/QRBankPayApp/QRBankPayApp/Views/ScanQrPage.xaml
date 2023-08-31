@@ -10,14 +10,49 @@
              x:DataType="viewModels:ScanQrViewModel"
              xmlns:local="clr-namespace:QRBankPayApp;assembly=QRBankPayApp"
              mc:Ignorable="d"
-             x:Class="QRBankPayApp.Views.ScanQrPage">
+             x:Class="QRBankPayApp.Views.ScanQrPage"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
     <ContentPage.Content>
-        <StackLayout Margin="10,0,10,0">
-            <Label Text="Lector de codigo QR"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Command="{Binding lectorCommand}" Text="Lector Qr" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
-            <Entry Text="{Binding EntryQr}" Placeholder="Resultado del QR"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="10,0,10,0">
+                <Label Text="Lector de codigo QR"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                       FontSize="Title"/>
+                <Image Source="{Binding SelectedImage}"
+                       HeightRequest="200"
+                       WidthRequest="200"/>
+
+                <Button Command="{Binding lectorCommand}" Text="Lector QR desde la camara" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,0" FontSize="20"/>
+                <Button Command="{Binding PickImageCommand}" Text="Leer QR desde la galeria" Style="{StaticResource ButtonSecondary}" Margin="0,20,0,5" FontSize="20"/>
+                <Entry Text="{Binding EntryQr}" Placeholder="Resultado del QR"/>
+                <Grid Margin="0,0,0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Nombre:"
+                           FontSize="20"/>
+
+                    <Label Grid.Row="0" Grid.Column="1"
+                           Text="{Binding ResultText}"
+                           FontSize="20"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Numero Cuenta:"
+                           FontSize="20"/>
+
+                    <Label Grid.Row="1" Grid.Column="1"
+                           Text="{Binding ScannedResult}"
+                           FontSize="20"/>
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

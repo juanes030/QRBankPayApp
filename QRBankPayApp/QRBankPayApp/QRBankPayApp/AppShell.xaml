@@ -36,8 +36,8 @@
     
     <TabBar>
         <ShellContent Title="Inicio" Icon="home.png" Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-        <ShellContent Title="Transacciones" Icon="qr1.png" Route="TransactionPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
+        <ShellContent Title="Transacciones" Icon="transaccion.png" Route="TransactionPage" ContentTemplate="{DataTemplate local:TransactionPage}" />
         <ShellContent Title="GenerarQR" Icon="qr1.png" Route="GenerateQrPage" ContentTemplate="{DataTemplate local:GenerateQrPage}" />
-        <ShellContent Title="ScanQR" Icon="qr1.png" Route="ScanQrPage" ContentTemplate="{DataTemplate local:ScanQrPage}" />
+        <ShellContent Title="ScanQR" Icon="codigo_qr.png" Route="ScanQrPage" ContentTemplate="{DataTemplate local:ScanQrPage}" />
     </TabBar>
 </Shell>

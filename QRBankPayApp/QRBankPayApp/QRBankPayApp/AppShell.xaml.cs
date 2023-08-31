@@ -10,6 +10,7 @@ namespace QRBankPayApp
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ScanQrPage), typeof(ScanQrPage));
+            Routing.RegisterRoute(nameof(GenerateQrPage), typeof(GenerateQrPage));
         }
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {

@@ -50,10 +50,16 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <StackLayout Orientation="Horizontal">
-                <Button Command="{Binding GenerateQrCommand}" Text="Generar QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
-                <Button Command="{Binding ScanQrCommand}" Text="Leer QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
-            </StackLayout>            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Command="{Binding GenerateQrCommand}" Text="Generar QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20" HeightRequest="200"/>
+                <Button Grid.Row="0" Grid.Column="1" Command="{Binding ScanQrCommand}" Text="Leer QR" Style="{StaticResource ButtonPrimary}" Margin="0,40,0,5" FontSize="20"/>
+            </Grid>           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
